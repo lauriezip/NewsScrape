@@ -1,84 +1,88 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
   <head>
-    <meta charset="UTF-8">
-    <title>NewsScrape</title>
-    <style>
-      body { background-color: whitesmoke }
-      #wrapper {
-        width: 960px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: 5%;
-      }
-      #articles {
-        display: inline-block;
-        overflow: auto;
-        width: 60%;
-        height: 700px;
-      }
-      #notes {
-        float: right;
-        width: 30%;
-      }
-      textarea, input {
-        display: block;
-        width: 100%;
-        background-color: white;
-      }
-      input {
-        height: 36px;
-        font-size: 24px;
-      }
-      textarea {
-        height: 200px;
-        font-size: 18px;
-      }
-    </style>
+    <!-- Tab Title -->
+    <title>News Scrape</title>
+    <!-- View Port Size -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Materialize - Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <!-- Materialize - Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="public/style.css">
   </head>
+
   <body>
-    <div id="wrapper">
-      <h1>Notes</h1>
-      <h2><i>Articles from WIRED and your notes</i></h2>
-      <div id="articles"></div>
-      <div id="notes"></div>
+  
+    <!-- Fixed Nav Bar -->
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper grey darken-3">
+          <a href="/" class="brand-logo"><i class="material-icons">loop</i>News Scrape</a>
+          <a href="" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="http://www.wire.com/" target="_new">Wire</a></li>
+            <li><a href="https://github.com/lauriezip/NewsScrape" target="_new">Github Repo</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="app.js"></script>
-  </body>
-</html>
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script
-            src="https://code.jquery.com/jquery-3.2.1.js"
-            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-            crossorigin="anonymous"></script>
+    <!-- For Mobile Nav Bar -->
+    <ul class="side-nav darken-3" id="mobile-demo">
+      <li><a href="http://www.wire.com/" target="_new">Wire</a></li>
+      <li><a href="https://github.com/lauriezip/NewsScrape" target="_new">Github Repo</a></li>
+    </ul>
 
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Page Content -->
+    <main> 
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+      <!-- Site Info Container -->
+      <div class="container">
+        <ul class="collection with-header">
+          <li class="collection-header grey lighten-2"><h4><b>Welcome to News Scrape!</b></h4></li>
+          <li class="collection-item">This application lets you read and comment on news articles that were scrapped from the web.</li>
+          <li class="collection-item"><div>Click <i class="material-icons">loop</i> in the navbar to re-scrape data.</div></li>
+          <li class="collection-item"><div>Click <i class="material-icons">language</i> to view an article.</div></li>
+          <li class="collection-item"><div>Click <i class="material-icons">comment</i> to add a comment.</div></li>
+          <li class="collection-item"><div>Click <i class="material-icons">thumbs_up_down</i> to read comments.</div></li>
+        </ul>
+      </div>
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-
-
-
-
-    <title></title>
-</head>
-<body>
+      <!-- Render All Articles -->
+      <div class="container">
         {{{body}}}
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+      </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="page-footer grey darken-3">
+      <div class="footer-copyright">
+        <div class="container">
+        © Author cannot claim copyright. All article data was web scraped from 
+        <a class="grey-text text-lighten-4" href="http://www.wire.com/">www.wire.com</a>
+        </div>
+      </div>
+    </footer>
+
+
+
+    <!-- Link in jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <!-- Materialize - Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+    <!-- Basic Page JavaScript for Repsonsiveness -->
     <script src="app.js"></script>
-</body>
+    
+    
+  </body>
+
 </html>
+

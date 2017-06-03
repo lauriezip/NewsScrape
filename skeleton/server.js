@@ -1,6 +1,6 @@
 // Required Dependencies
 var express = require("express");
-var handlebars = require("handlebars");
+var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
@@ -16,8 +16,6 @@ mongoose.Promise = Promise;
 
 // Initialize Express
 var app = express();
-
-// Use morgan and body parser with our app
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({
   extended: false
@@ -26,8 +24,13 @@ app.use(bodyParser.urlencoded({
 // Make public a static dir
 app.use(express.static("public"));
 
+// Express-Handlebars
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/week18day3mongoose");
+mongoose.connect("mongodb://heroku_GOES HERE");
 var db = mongoose.connection;
 
 // Show any mongoose errors
@@ -40,6 +43,9 @@ db.once("open", function() {
   console.log("Mongoose connection successful,Yay!");
 });
 
+// Import the Comment and Article models
+var Comment = require('./models/Note.js');
+var Article = require('./models/Article.js');
 
 // Routes
 // ======
@@ -149,6 +155,7 @@ app.post("/articles/:id", function(req, res) {
 
 
 // Listen on port 3000
+var port = process.env.PORT || 3000;
 app.listen(3000, function() {
   console.log("App running on port 3000!");
 });
